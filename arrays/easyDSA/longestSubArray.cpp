@@ -4,24 +4,22 @@ using namespace std;
 int maxLength(vector<int> arr, int k) 
 {
     int n = arr.size(); 
-    int l = 0, r = 0; 
-    int sum = arr[0];
+    
     int maxLen = 0;
-    while (r < n) 
+    for(int i=0;i<n;i++)
     {
-        while (l <= r && sum > k) 
+        int sum = arr[i];
+        if(arr[i] == k)
         {
-            sum -= arr[l];
-            l++;
+            return 1;
         }
-        if(sum == k) 
+        for(int j = i+1 ; j<n;j++)
         {
-            maxLen = max(maxLen, r-l+1);
-        }
-        r++;
-        if (r < n) 
-        {
-            sum += arr[r];
+            sum += arr[j];
+            if(sum == k)
+            {
+                maxLen = max(maxLen,j-i+1);
+            }
         }
     }
     return maxLen;
@@ -31,7 +29,7 @@ int main()
 {
     vector<int> arr = {2, 3, 5, 1, 9};
     int k = 10;
-    cout << maxLength;
+    cout << maxLength(arr,k);
     return 0;
 }
 
