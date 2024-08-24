@@ -27,8 +27,8 @@ int maxLength(vector<int> arr, int k)
 
 int main()
 {
-    vector<int> arr = {2, 3, 5, 1, 9};
-    int k = 10;
+    vector<int> arr = { 1, 2, 1, 0, 1};
+    int k = 4;
     cout << maxLength(arr,k);
     return 0;
 }
