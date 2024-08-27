@@ -21,6 +21,7 @@ vector<vector<int>> triplet(int n, vector<int> &arr)
             }
         }
     }
+    
     return ans;
 }
 
