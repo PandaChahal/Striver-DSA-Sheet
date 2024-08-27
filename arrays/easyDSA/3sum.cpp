@@ -3,23 +3,24 @@ using namespace std;
 
 vector<vector<int>> triplet(int n, vector<int> &arr)
 {
-    set<vector<int>> st;
-    for(int i =0;i<n;i++)
+    vector<vector<int>> ans;
+    for(int i =0;i<=n-2;i++)
     {
-        for(int j = i+1;j<n;j++)
+        for(int j = i+1;j<=n-1;j++)
         {
-            for(int k =j+1;j<n;j++)
+            for(int k =j+1;j<=n;k++)
             {
                 if(arr[i]+arr[j]+arr[k] == 0)
                 {
-                    vector<int> temp = {arr[i],arr[j],arr[k]};
-                    sort(temp.begin(),temp.end());
-                    st.insert(temp);
+                    vector<int> temp ;
+                    temp.push_back(arr[i]);
+                    temp.push_back(arr[j]);
+                    temp.push_back(arr[k]);
+                    ans.push_back(temp);
                 }
             }
         }
     }
-    vector<vector<int>> ans(st.begin(),st.end());
     return ans;
 }
 
@@ -30,14 +31,13 @@ int main()
     vector<int> arr = { -1, 0, 1, 2, -1, -4};
     int n = arr.size();
     vector<vector<int>> ans = triplet(n, arr);
-    for (auto it : ans) {
-        cout << "[";
-        for (auto i : it) {
-            cout << i << " ";
+    for (int i =0;i<ans.size();i++) 
+    {
+        for(int j=0;j<ans[i].size();j++)
+        {
+            cout<<ans[i][j]<<" ";
         }
-        cout << "] ";
     }
-    cout << "\n";
     return 0;
 }
 
