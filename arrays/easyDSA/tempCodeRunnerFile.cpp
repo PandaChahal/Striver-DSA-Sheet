@@ -1,1 +1,1 @@
-ans.push_back(temp);
+arr[i]+arr[j]+arr[k]
