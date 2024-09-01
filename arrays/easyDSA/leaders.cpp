@@ -1,34 +1,29 @@
-//print all the leaders in array -means print all the numbers which are greater than all the elements in the right - i/p [3,4 5,2, 3,1,0] O/p - 5 and 3 because they are greater than number on their right side 
-#include<iostream>
-#include<vector>
+#include<bits/stdc++.h>
 using namespace std;
 
-void leaderFinder(vector<int> arr)
+vector<int> leaderFinder(int arr[], int n) 
 {
-    int i =0;
-    int n = arr.size();
-    int j = n-1;
-    int element;
-    while(i != j)
+ vector<int> ans;
+ int max = arr[n - 1];
+ ans.push_back(arr[n-1]);
+ for (int i = n - 2; i >= 0; i--)
+    if (arr[i] > max) 
     {
-        if(arr[j]>arr[i])
-        {
-            i++;
-            element = arr[j];
-            cout<<element<<" ";
-            i = i+2;
-            j = n-1;
-        }  
-        else
-        {
-            j--;
-        }     
-    }
-    
+      ans.push_back(arr[i]);
+      max = arr[i];
+    }  
+  return ans;
 }
-int main()
+
+int main() 
 {
-    vector<int> arr = {3,4,5,2,3,1,0};
-    leaderFinder(arr);
-    return 0;
+  int n = 6;
+  int arr[n] = {10, 22, 12, 3, 0, 6};
+  vector<int> ans = leaderFinder(arr,n);
+  for(int i = ans.size()-1;i>=0;i--)
+  {      
+      cout<<ans[i]<<" ";
+  }
+  cout<<endl;
+  return 0;
 }
