@@ -9,6 +9,10 @@ int maxLengthofSubArray(vector<int> arr)
     for(int i=0;i<n-1;i++)
     {
         sum = arr[i];
+        if(sum == 0)
+        {
+            return 1;
+        }
         for(int j=i+1;j<n;j++)
         {
             sum += arr[j];
@@ -23,7 +27,7 @@ int maxLengthofSubArray(vector<int> arr)
 }
 int main()
 {
-    vector<int> arr ={6, -2, 2, -8, 1, 7, 4, -10};
+    vector<int> arr ={1, 0, -5};
     cout<<maxLengthofSubArray(arr);
     return 0;
 }
