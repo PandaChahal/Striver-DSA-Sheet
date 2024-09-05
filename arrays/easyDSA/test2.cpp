@@ -38,11 +38,11 @@ vector<int> modifier(vector<int> arr)
 }
 int main()
 {
-    vector<int> arr = {1, 2, -4, -5};
-    vector<int> finalArray = modifier(arr);
-    for (int i = 0; i < finalArray.size(); i++)
+    vector<int> arr = {1, 2, -3, -1, -2, -3};
+    vector<int> newArr = modifier(arr);
+    for (int i = 0; i < newArr.size(); i++)
     {
-        cout << finalArray[i] << " ";
+        cout << newArr[i] << " ";
     }
     return 0;
 }
