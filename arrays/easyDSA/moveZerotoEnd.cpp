@@ -46,7 +46,7 @@ vector<int> moveZeros(vector<int> arr)
 }
 int main()
 {
-    vector<int> arr = {0,2,4,0,1};
+    vector<int> arr ={1, 0, 2, 3, 2, 0, 0, 4, 5, 1};
     int n = arr.size();
     vector<int> final = moveZeros(arr);
     for(int i=0;i<n;i++)
