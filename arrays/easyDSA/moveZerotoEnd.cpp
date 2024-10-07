@@ -2,22 +2,45 @@
 using namespace std;
 vector<int> moveZeros(vector<int> arr) 
 {
-    vector<int> final;
+    // vector<int> final;
+    // int n = arr.size();
+    // for(int i =0;i<n;i++)
+    // {
+    //     if(arr[i]>0)
+    //     {
+    //         final.push_back(arr[i]);
+    //     }
+    // }
+    // for(int i =0;i<n;i++)
+    // {
+    //     arr[i] = 0;
+    // }
+    // for(int i=0;i<final.size();i++)
+    // {
+    //     arr[i] = final[i] ;
+    // }
+    // return arr;
     int n = arr.size();
-    for(int i =0;i<n;i++)
+    int j = -1;
+    for(int i=0;i<n;i++)
     {
-        if(arr[i]>0)
+        if(arr[i] == 0)
         {
-            final.push_back(arr[i]);
+            j = i;
+            break;
         }
     }
-    for(int i =0;i<n;i++)
+    if(j == -1)
     {
-        arr[i] = 0;
+        return arr;
     }
-    for(int i=0;i<final.size();i++)
+    for(int i = j+1;i<n;i++)
     {
-        arr[i] = final[i] ;
+        if(arr[i] != 0)
+        {
+            swap(arr[i],arr[j]);
+            j++;
+        }
     }
     return arr;
 }
