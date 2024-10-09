@@ -38,6 +38,15 @@ Node* insertNode(int value,Node* head)
     a->next = head;
     return a;
 }
+Node* deleteNode(Node* head)
+{
+    Node* a = head;      
+    head = head->next;    
+    head->prev = nullptr;   
+    a->next = nullptr;  
+    return head;  
+}
+
 int main()
 {
     Node* n1 = new Node(10);
@@ -51,7 +60,11 @@ int main()
     n3->prev = n2;
     n4->prev = n3;
     printDLL(n1);
+    //inserting a new node at head
     n1 = insertNode(50,n1);
+    printDLL(n1);
+    //deleting head node
+    n1 = deleteNode(n1);
     printDLL(n1);
     return 0;
 }
