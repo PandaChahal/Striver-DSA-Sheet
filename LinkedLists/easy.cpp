@@ -55,6 +55,19 @@ int nodeCounter(Node* head)
     return count;
 }
 
+int searchElement(int value,Node* head)
+{
+    Node* a = head;
+    while(a != nullptr)
+    {
+        if(a->data == value)
+        {
+            return 1;
+        }
+        a = a->next;
+    }
+    return 0;
+}
 int main()
 {
     Node* n1 = new Node(10);
@@ -71,6 +84,11 @@ int main()
     printLList(n1);
     cout<<endl;
     //counting number of nodes
-    cout<<"number of nodes are "<<nodeCounter(n1);
+    cout<<"number of nodes are "<<nodeCounter(n1)<<endl;
+    //searching for a value in ll
+    int x ;
+    cout<<"enter the humber you want to search :";
+    cin>>x;
+    cout<<"RESULT (0:not present , 1:present) : "<<searchElement(x,n1);
     return 0;
 }
