@@ -42,7 +42,19 @@ Node* insertNode(int value , Node* head)
     Node* current = new Node(value,head);
     return current;
 }
-//inserting a node
+
+int nodeCounter(Node* head)
+{
+    Node* a = head;
+    int count = 0;
+    while(a != nullptr)
+    {
+        a = a->next;
+        count++;
+    }
+    return count;
+}
+
 int main()
 {
     Node* n1 = new Node(10);
@@ -54,7 +66,11 @@ int main()
     n3->next = n4;
     printLList(n1);
     cout<<endl;
+    //inserting a node
     n1 = insertNode(25,n1);
     printLList(n1);
+    cout<<endl;
+    //counting number of nodes
+    cout<<"number of nodes are "<<nodeCounter(n1);
     return 0;
 }
