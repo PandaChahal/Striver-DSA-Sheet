@@ -31,6 +31,13 @@ Node* printDLL(Node* head)
     cout<<endl;
     return head;
 }
+
+Node* insertNode(int value,Node* head)
+{
+    Node* a = new Node(value);
+    a->next = head;
+    return a;
+}
 int main()
 {
     Node* n1 = new Node(10);
@@ -43,6 +50,8 @@ int main()
     n2->prev = n1;
     n3->prev = n2;
     n4->prev = n3;
+    printDLL(n1);
+    n1 = insertNode(50,n1);
     printDLL(n1);
     return 0;
 }
