@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+
 class Node{
     public:
     int data ;
@@ -15,6 +16,7 @@ class Node{
         next = nullptr;
     }
 };
+
 void printLList(Node* n) 
 {
     while (n != nullptr) 
@@ -35,7 +37,11 @@ int main()
     return 0;
 }
 */
-
+Node* insertNode(int value , Node* head)
+{
+    Node* current = new Node(value,head);
+    return current;
+}
 //inserting a node
 int main()
 {
@@ -47,7 +53,8 @@ int main()
     n2->next = n3;
     n3->next = n4;
     printLList(n1);
-    Node* temp = new Node(50, n1);
-    printLList(temp);
+    cout<<endl;
+    n1 = insertNode(25,n1);
+    printLList(n1);
     return 0;
 }
