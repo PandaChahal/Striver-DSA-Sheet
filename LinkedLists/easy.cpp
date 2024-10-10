@@ -89,6 +89,6 @@ int main()
     int x ;
     cout<<"enter the humber you want to search :";
     cin>>x;
-    cout<<"RESULT (0:not present , 1:present) : "<<searchElement(x,n1);
+    cout<<"RESULT (0:not present , 1:present): "<<searchElement(x,n1);
     return 0;
 }
