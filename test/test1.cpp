@@ -3,7 +3,7 @@
 using namespace std;
 
 //rearrange 012 array
-/*vector<int> rearrange(vector<int> &arr)
+vector<int> rearrange(vector<int> &arr)
 {
     int n = arr.size();
     int a =0,b=0,c=0;
@@ -45,7 +45,7 @@ int main()
         cout<<final[i]<<" ";
     }
     return 0;
-}*/
+}
 
 //deleting a node
 // class Node
@@ -79,7 +79,7 @@ int main()
 // {
 //     Node* a = head;
 //     head = head->next;
-//     a->next = nullptr;
+//     delete a;
 //     return head;
 // }
 // int main()
@@ -99,31 +99,31 @@ int main()
 // }
 
 //deleting duplicates
-int main()
-{
-    vector<int> arr = {1,1,1,2,2,3,3,3,3,4,4};
-    vector<int> result;
-    int i =0;
-    int n = arr.size();
-    int element = 0;
-    while(i<n)
-    {
-        if(arr[i] == element)
-        {
-            i++;
-        }
-        else
-        {
-            element = arr[i];
-            result.push_back(element);
-            i++;
-        }
-    }
-    for(int i =0;i<result.size();i++)
-    {
-        cout<<result[i]<<" ";
-    }
-    cout<<endl;
-    cout<<result.size()<<endl;
-    return 0;
-}
+// int main()
+// {
+//     vector<int> arr = {1,1,1,2,2,3,3,3,3,4,4};
+//     vector<int> result;
+//     int i =0;
+//     int n = arr.size();
+//     int element = 0;
+//     while(i<n)
+//     {
+//         if(arr[i] == element)
+//         {
+//             i++;
+//         }
+//         else
+//         {
+//             element = arr[i];
+//             result.push_back(element);
+//             i++;
+//         }
+//     }
+//     for(int i =0;i<result.size();i++)
+//     {
+//         cout<<result[i]<<" ";
+//     }
+//     cout<<endl;
+//     cout<<result.size()<<endl;
+//     return 0;
+// }
