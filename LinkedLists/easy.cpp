@@ -5,11 +5,13 @@ class Node{
     public:
     int data ;
     Node* next;
+
     Node(int value , Node* next1)
     {
         data = value;
         next = next1;
     }
+    
     Node(int value)
     {
         data = value;
