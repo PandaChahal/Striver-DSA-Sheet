@@ -70,6 +70,24 @@ int searchElement(int value,Node* head)
     }
     return 0;
 }
+Node * deleteParticular(Node* head,int value)
+{
+    Node* a = head;
+    Node* b ;
+    while(a != nullptr)
+    {
+        if(a->data == value)
+        {
+            break;
+        }
+        b = a;
+        a = a->next;
+    }
+    b->next = b->next->next;
+    delete a;
+    return head;
+}
+
 int main()
 {
     Node* n1 = new Node(10);
@@ -91,6 +109,8 @@ int main()
     int x ;
     cout<<"enter the humber you want to search :";
     cin>>x;
-    cout<<"RESULT (0:not present , 1:present): "<<searchElement(x,n1);
+    //cout<<"RESULT (0:not present , 1:present): "<<searchElement(x,n1);
+    n1 = deleteParticular(n1,x);
+    printLList(n1);
     return 0;
 }
