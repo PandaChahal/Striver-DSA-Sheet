@@ -18,7 +18,7 @@ vector<int> leaderFinder(int arr[], int n)
 int main() 
 {
   int n = 6;
-  int arr[n] = {10, 22, 12, 3, 0, 6};
+  int arr[n] = {10, 22, 12, 3,6,0};
   vector<int> ans = leaderFinder(arr,n);
   for(int i = ans.size()-1;i>=0;i--)
   {      
