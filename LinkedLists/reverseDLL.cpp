@@ -42,7 +42,6 @@ Node* reverseDLL(Node* head)
         current-> next = temp;
         current = current->prev;
     }
-    //Node* newHead = temp->prev;
     return temp->prev;
 }
 int main()
