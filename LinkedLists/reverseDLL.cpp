@@ -21,17 +21,30 @@ class Node
     }
 };
 
-Node* printDLL(Node* head)
+void printDLL(Node* head) 
 {
-    while(head != nullptr)
+    while (head != nullptr) 
     {
-        cout<<head->data<<" ";
-        head = head->next;
+        cout << head->data << " ";  
+        head = head->next;         
     }
     cout<<endl;
-    return head;
 }
 
+Node* reverseDLL(Node* head)
+{
+    Node* current = head;
+    Node* temp = NULL;
+    while(current != nullptr)
+    {
+        temp = current -> prev;
+        current -> prev = current -> next;
+        current-> next = temp;
+        current = current->prev;
+    }
+    //Node* newHead = temp->prev;
+    return temp->prev;
+}
 int main()
 {
     Node* n1 = new Node(10);
@@ -44,6 +57,8 @@ int main()
     n2->prev = n1;
     n3->prev = n2;
     n4->prev = n3;
+    printDLL(n1);
+    n1 = reverseDLL(n1);
     printDLL(n1);
     return 0;
 }
