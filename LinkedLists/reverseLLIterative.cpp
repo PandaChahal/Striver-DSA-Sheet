@@ -31,17 +31,17 @@ void printLList(Node* n)
 }
 Node* reverse(Node* head)
 {
-    Node* current = head->next;
-    Node* temp = head;
+    Node* current = head;
     Node* prev = nullptr;
-    while(current != nullptr)
+    Node* next = nullptr;
+    while (current != nullptr) 
     {
-        temp -> next = prev;
-        prev = temp;
-        temp = current;
-        current = current->next;
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
     }
-    return temp;
+    return prev;
 }
 int main()
 {
