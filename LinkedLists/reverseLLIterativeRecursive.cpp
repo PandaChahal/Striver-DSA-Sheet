@@ -29,7 +29,7 @@ void printLList(Node* n)
     }
     cout<<endl;
 }
-Node* reverse(Node* head)
+Node* reverseIterative(Node* head)
 {
     Node* current = head;
     Node* prev = nullptr;
@@ -43,6 +43,18 @@ Node* reverse(Node* head)
     }
     return prev;
 }
+Node* reverseRecursive(Node* head)
+{
+    if(head == nullptr || head->next == nullptr)
+    {
+        return head;
+    }
+    Node* newhead = reverseRecursive(head->next);
+    Node* front = head->next;
+    front->next = head;
+    head->next = nullptr;
+    return newhead;
+}
 int main()
 {
     Node* n1 = new Node(10);
@@ -53,7 +65,11 @@ int main()
     n2->next = n3;
     n3->next = n4;
     printLList(n1);
-    n1 = reverse(n1);
+    //iterative reverse
+    //n1 = reverseIterative(n1);
+    //printLList(n1);
+    //recursive reverse
+    n1 = reverseRecursive(n1);
     printLList(n1);
     return 0;
 }
