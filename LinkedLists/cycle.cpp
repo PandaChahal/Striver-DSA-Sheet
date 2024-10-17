@@ -116,6 +116,6 @@ int main()
     }
     Node* h = startingPoint(n1);
     cout<<"starting Node is "<<h->data<<endl;
-    cout<<lengthofcycle(n1)<<endl;
+    cout<<"mength of cycle is "<<lengthofcycle(n1)<<endl;
     return 0;
 }
