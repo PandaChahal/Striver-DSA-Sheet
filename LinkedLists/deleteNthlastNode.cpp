@@ -45,9 +45,9 @@ Node* reverseRecursive(Node* head)
 Node* deleteNode(Node* head, int n)
 {   
     int count = n;
-    Node * a = head;
+    Node *a = head;
     Node * b;
-    while(count != 0)
+    while(count != 1)
     {
         b = a;
         a = a->next;
@@ -66,10 +66,15 @@ int main()
     n1->next = n2;
     n2->next = n3;
     n3->next = n4;
+    int x ;
+    cout<<"enter the node to be deleted : " ;
+    cin>>x;
+    cout<<"original LL :";
     printLList(n1);
     n1 = reverseRecursive(n1);
-    n1 = deleteNode(n1,2);
+    n1 = deleteNode(n1,x);
     n1 = reverseRecursive(n1);
+    cout<<"modified LL :";
     printLList(n1);
     return 0;
 }
