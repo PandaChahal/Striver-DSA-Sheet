@@ -57,6 +57,33 @@ Node* startingPoint(Node* head)
     return NULL;
 }
 
+int findLength(Node* slow, Node* fast)
+{
+    int count = 1;
+    fast = fast->next;
+    while(slow!=fast)
+    {
+        count++;
+        fast = fast->next;
+    }
+    return count;
+}
+int lengthofcycle(Node* head)
+{
+    Node* h = head;
+    Node* r = head;
+    while(r != nullptr && r->next != nullptr)
+    {
+        h = h->next->next;
+        r = r->next;
+        if(h == r)
+        {
+            return findLength(h,r);
+        }
+    }
+    return 0;
+}
+
 void printLList(Node* n) 
 {
     while (n != nullptr) 
@@ -88,6 +115,7 @@ int main()
         cout<<"no cycle detected"<<endl;
     }
     Node* h = startingPoint(n1);
-    cout<<h->data<<endl;
+    cout<<"starting Node is "<<h->data<<endl;
+    cout<<lengthofcycle(n1)<<endl;
     return 0;
 }
