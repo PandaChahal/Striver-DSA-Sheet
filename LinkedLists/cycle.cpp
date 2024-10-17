@@ -35,6 +35,28 @@ bool detectCycle(Node* head)
     return false;
 }
 
+Node* startingPoint(Node* head)
+{
+    Node* h = head;
+    Node* r = head;
+    while(r != nullptr && r->next != nullptr)
+    {
+        h = h->next->next;
+        r = r->next;
+        if(h == r)
+        {
+            h = head;
+            while(h!=r)
+            {
+                h = h->next;
+                r = r->next;
+            }
+            return h;
+        }
+    }
+    return NULL;
+}
+
 void printLList(Node* n) 
 {
     while (n != nullptr) 
@@ -59,11 +81,13 @@ int main()
     bool k = detectCycle(n1);
     if(k)
     {
-        cout<<"cycle detected";
+        cout<<"cycle detected"<<endl;
     }
     else
     {
-        cout<<"no cycle detected";
+        cout<<"no cycle detected"<<endl;
     }
+    Node* h = startingPoint(n1);
+    cout<<h->data<<endl;
     return 0;
 }
