@@ -2,9 +2,9 @@
 using namespace std;
 int numofRotattions(vector<int> arr) 
 {
-    int n = arr.size();
-    int l = 0;
-    int r = n - 1;
+    int n= arr.size();
+    int l= 0;
+    int r= n - 1;
     int ans = INT_MAX;
     int rotations;
     while (l <= r) 
@@ -34,7 +34,7 @@ int numofRotattions(vector<int> arr)
 
 int main()
 {
-    vector<int> arr = {4, 5, 6, 7,8, -1,0,1, 2, 3};
+    vector<int> arr = {4, 5, 6, 7, 0, 1, 2, 3};
     cout <<"number of rotations are "<<numofRotattions(arr);
     return 0;
 }
