@@ -149,65 +149,156 @@ using namespace std;
 // }
 
 //reverse DLL
+// class Node
+// {
+//     public:
+//     int data;
+//     Node* next;
+//     Node* prev;
+
+//     Node(int value)
+//     {
+//         data = value;
+//         next = nullptr;
+//         prev = nullptr;
+//     }
+//     Node(int value,Node* next1,Node* prev1)
+//     {
+//         data = value;
+//         next = next1;
+//         prev = prev1;
+//     }
+// };
+
+// void printDLL(Node* head)
+// {
+//     while(head != nullptr)
+//     {
+//         cout<<head->data<<" ";
+//         head = head->next;
+//     }
+//     cout<<endl;
+// }
+
+// Node* reverseDLL(Node* head)
+// {
+//     Node* current = head;
+//     Node* temp = NULL;
+//     while(current != nullptr)
+//     {
+//         temp = current -> prev;
+//         current -> prev = current -> next;
+//         current-> next = temp;
+//         current = current->prev;
+//     }
+//     return temp->prev;
+// }
+
+// int main()
+// {
+//     Node* n1 = new Node(10);
+//     Node* n2 = new Node(20);
+//     Node* n3 = new Node(30);
+//     Node* n4 = new Node(40);
+//     n1->next = n2;
+//     n2->next = n3;
+//     n3->next = n4;
+//     n2->prev = n1;
+//     n3->prev = n2;
+//     n4->prev = n3;
+//     printDLL(n1);
+//     n1 = reverseDLL(n1);
+//     printDLL(n1);
+//     return 0;
+// }
+
+//LL is palindrome or not
 class Node
 {
-    public:
+    public :
     int data;
     Node* next;
-    Node* prev;
-
     Node(int value)
     {
         data = value;
         next = nullptr;
-        prev = nullptr;
     }
-    Node(int value,Node* next1,Node* prev1)
+    Node(int value,Node* next1)
     {
         data = value;
         next = next1;
-        prev = prev1;
     }
 };
 
-void printDLL(Node* head)
+void printLList(Node* n) 
 {
-    while(head != nullptr)
+    while (n != nullptr) 
     {
-        cout<<head->data<<" ";
-        head = head->next;
+        cout << n->data<<" ";
+        n = n->next;
     }
     cout<<endl;
 }
 
-Node* reverseDLL(Node* head)
+Node* reverseLL(Node* n)
 {
-    Node* current = head;
-    Node* temp = NULL;
-    while(current != nullptr)
+    if(n == nullptr || n->next == nullptr)
     {
-        temp = current -> prev;
-        current -> prev = current -> next;
-        current-> next = temp;
-        current = current->prev;
+        return n;
     }
-    return temp->prev;
+    Node* newhead = reverseLL(n->next);
+    Node* front = n->next;
+    front->next = n;
+    n->next = nullptr;
+    return newhead;
 }
 
+bool palindromeCheck(Node* head)
+{
+    if(head == nullptr || head->next == nullptr)
+    {
+        return head;
+    }
+    Node* slow = head;
+    Node* fast = head;
+    while(fast->next != nullptr && fast->next->next != nullptr)
+    {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    Node* newhead = reverseLL(slow->next);
+    Node* first = head;
+    Node* second = newhead;
+    while(second != NULL)
+    {
+        if(first->data != second->data)
+        {
+            reverseLL(newhead);
+            return false;
+        }
+        first = first->next;
+        second = second->next;
+    }
+    reverseLL(newhead);
+    return true;
+}
 int main()
 {
-    Node* n1 = new Node(10);
-    Node* n2 = new Node(20);
-    Node* n3 = new Node(30);
-    Node* n4 = new Node(40);
+    Node* n1 = new Node(1);
+    Node* n2 = new Node(2);
+    Node* n3 = new Node(3);
+    Node* n4 = new Node(2);
+    Node* n5 = new Node(1);
     n1->next = n2;
     n2->next = n3;
     n3->next = n4;
-    n2->prev = n1;
-    n3->prev = n2;
-    n4->prev = n3;
-    printDLL(n1);
-    n1 = reverseDLL(n1);
-    printDLL(n1);
+    n4->next = n5;
+    bool k = palindromeCheck(n1);
+    if(k){
+        cout<<"given LL is a palindrome";
+    }
+    else{
+        cout<<"its not a palindrome ";
+    }
     return 0;
 }
