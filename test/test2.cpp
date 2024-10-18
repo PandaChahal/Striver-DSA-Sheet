@@ -63,29 +63,151 @@ using namespace std;
 // }
 
 //kadane algo
-int maxSumofArray(vector<int> arr)
+// int maxSumofArray(vector<int> arr)
+// {
+//     int n = arr.size();
+//     int sum = 0;
+//     int maxSum = INT_MIN;
+//     if(n == 1)
+//     {
+//         return arr[0];
+//     }
+//     for(int i=0;i<n;i++)
+//     {
+//         sum += arr[i];
+//         maxSum = max(sum , maxSum);
+//         if(sum < 0)
+//         {
+//             sum = 0 ;
+//         }
+//     }
+//     return maxSum;
+// }
+// int main()
+// {
+//     vector<int> arr = {-2,1,-3,4,-1,2,1,-5,4};
+//     cout<<"max sum out of the given array is "<<maxSumofArray(arr);
+//     return 0;
+// }
+
+//reverse a LL - recursive
+
+// class Node
+// {
+//     public:
+//     int data;
+//     Node* next;
+
+//     Node(int value)
+//     {
+//         data = value;
+//         next = nullptr;
+//     }
+//     Node(int value,Node* next1)
+//     {
+//         data = value;
+//         next = next1;
+//     }
+// };
+
+// Node* reverseRecursive(Node* n)
+// {
+//     if(n == nullptr || n->next == nullptr)
+//     {
+//         return n;
+//     }
+//     Node* newhead = reverseRecursive(n->next);
+//     Node* front = n->next;
+//     front->next = n;
+//     n->next = nullptr;
+//     return newhead;
+// }
+// void printLList(Node* n) 
+// {
+//     while (n != nullptr) 
+//     {
+//         cout << n->data<<" ";
+//         n = n->next;
+//     }
+//     cout<<endl;
+// }
+// int main()
+// {
+//     Node* n1 = new Node(1);
+//     Node* n2 = new Node(2);
+//     Node* n3 = new Node(3);
+//     Node* n4 = new Node(4);
+//     Node* n5 = new Node(5);
+//     n1->next = n2;
+//     n2->next = n3;
+//     n3->next = n4;
+//     n4->next = n5;
+//     printLList(n1);
+//     n1 = reverseRecursive(n1);
+//     printLList(n1);
+//     return 0;
+// }
+
+//reverse DLL
+class Node
 {
-    int n = arr.size();
-    int sum = 0;
-    int maxSum = INT_MIN;
-    if(n == 1)
+    public:
+    int data;
+    Node* next;
+    Node* prev;
+
+    Node(int value)
     {
-        return arr[0];
+        data = value;
+        next = nullptr;
+        prev = nullptr;
     }
-    for(int i=0;i<n;i++)
+    Node(int value,Node* next1,Node* prev1)
     {
-        sum += arr[i];
-        maxSum = max(sum , maxSum);
-        if(sum < 0)
-        {
-            sum = 0 ;
-        }
+        data = value;
+        next = next1;
+        prev = prev1;
     }
-    return maxSum;
+};
+
+void printDLL(Node* head)
+{
+    while(head != nullptr)
+    {
+        cout<<head->data<<" ";
+        head = head->next;
+    }
+    cout<<endl;
 }
+
+Node* reverseDLL(Node* head)
+{
+    Node* current = head;
+    Node* temp = NULL;
+    while(current != nullptr)
+    {
+        temp = current -> prev;
+        current -> prev = current -> next;
+        current-> next = temp;
+        current = current->prev;
+    }
+    return temp->prev;
+}
+
 int main()
 {
-    vector<int> arr = {-2,1,-3,4,-1,2,1,-5,4};
-    cout<<"max sum out of the given array is "<<maxSumofArray(arr);
+    Node* n1 = new Node(10);
+    Node* n2 = new Node(20);
+    Node* n3 = new Node(30);
+    Node* n4 = new Node(40);
+    n1->next = n2;
+    n2->next = n3;
+    n3->next = n4;
+    n2->prev = n1;
+    n3->prev = n2;
+    n4->prev = n3;
+    printDLL(n1);
+    n1 = reverseDLL(n1);
+    printDLL(n1);
     return 0;
 }
