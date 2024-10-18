@@ -3,7 +3,7 @@
 using namespace std;
 
 //union of two arrays
-vector <int> FindUnion(vector<int> arr1,vector<int> arr2) 
+vector <int> unionArr(vector<int> arr1,vector<int> arr2) 
 {
     int n = arr1.size();
     int m = arr2.size();
@@ -52,7 +52,7 @@ int main()
 {
     vector<int> arr1 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     vector<int> arr2 = {2, 3, 4, 4, 5, 11, 12};
-    vector<int> Union = FindUnion(arr1, arr2);
+    vector<int> Union = unionArr(arr1, arr2);
     cout << "Union : " << endl;
     for (int i=0;i<Union.size();i++)
     {
