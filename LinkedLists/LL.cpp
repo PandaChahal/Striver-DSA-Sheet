@@ -26,6 +26,7 @@ void printLList(Node* n)
         cout << n->data<<" ";
         n = n->next;
     }
+    cout<<endl;
 }
 /*
 int main()
