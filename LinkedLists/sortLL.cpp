@@ -32,21 +32,20 @@ void printLList(Node* n)
 Node* sortLL(Node* head)
 {
     vector<int> arr;
-    while(head != nullptr)
+    Node* n = head;
+    while(n!= nullptr)
     {
-        arr.push_back(head->data);
-        head = head->next;
+        arr.push_back(n->data);
+        n = n->next;
     }
     sort(arr.begin(),arr.end());
     int i =0;
-    while(i<arr.size())
+    n = head;
+    while (n != nullptr)
     {
-        while (head != nullptr)
-        {
-            head->data = arr[i];
-            head = head->next;
-            i++;
-        }
+        n->data = arr[i];
+        n = n->next;
+        i++;
     }
     return head;
 }
