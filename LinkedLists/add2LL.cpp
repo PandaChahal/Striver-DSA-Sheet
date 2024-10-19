@@ -16,38 +16,26 @@ class Node
         next = next1;
     }
 };
-class Solution 
+int sum(Node* l1,Node*l2)
 {
-    public:
-    Node* addTwoNumbers(Node* l1, Node* l2) 
+    int a = l1->data;
+    int b = l2->data;
+    Node* current1 = l1->next;
+    Node* current2 = l2->next;
+    while(current1 != NULL)
     {
-        Node* dummy = new Node(0); 
-        Node* temp = dummy; 
-        int carry = 0;
-        while( (l1 != NULL || l2 != NULL) || carry) 
-        {
-            int sum = 0; 
-            if(l1 != NULL)
-            {
-                sum += l1->data; 
-                l1 = l1 -> next; 
-            }
-            
-            if(l2 != NULL) 
-            {
-                sum += l2 ->data; 
-                l2 = l2 ->next; 
-            }
-            sum += carry; 
-            carry = sum / 10; 
-            Node* node = new Node(sum % 10); 
-            temp -> next = node; 
-            temp = temp -> next; 
-        }
-        return dummy -> next; 
+        a = a*10;
+        a = a + current1->data;
+        current1 = current1->next;
     }
-};
-
+    while(current2 != NULL)
+    {
+        b = b*10;
+        b = b + current2->data;
+        current2 = current2->next;
+    }
+    return (a+b);
+}
 void printLList(Node* n) 
 {
     while (n != nullptr) 
@@ -74,9 +62,6 @@ int main()
     printLList(l1);
     cout<<"second LL is ";
     printLList(l2);
-    Solution solution;
-    Node* result = solution.addTwoNumbers(l1, l2);
-    cout << "Resultant Linked List after adding: ";
-    printLList(result);
+    cout<<"sum is "<<sum(l1,l2);
     return 0;
 }
