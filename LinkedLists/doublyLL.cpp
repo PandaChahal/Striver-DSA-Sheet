@@ -21,7 +21,7 @@ class Node{
     }
 };
 
-Node* printDLL(Node* head)
+void printDLL(Node* head)
 {
     while(head != nullptr)
     {
@@ -29,7 +29,6 @@ Node* printDLL(Node* head)
         head = head->next;
     }
     cout<<endl;
-    return head;
 }
 
 Node* insertNode(int value,Node* head)
