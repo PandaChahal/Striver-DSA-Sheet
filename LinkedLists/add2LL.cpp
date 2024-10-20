@@ -16,25 +16,44 @@ class Node
         next = next1;
     }
 };
-int sum(Node* l1,Node*l2)
+
+Node* sum(Node* l1,Node* l2)
 {
-    int a = l1->data;
-    int b = l2->data;
-    Node* current1 = l1->next;
-    Node* current2 = l2->next;
-    while(current1 != NULL)
+    Node * temp1 = l1;
+    Node * temp2 = l2;
+    Node * dummynode = new Node(-1);
+    Node * current = dummynode;
+    int carry = 0;
+    while(temp1 != nullptr || temp2 != nullptr)
     {
-        a = a*10;
-        a = a + current1->data;
-        current1 = current1->next;
+        int sum = carry;
+        if(temp1)
+        {
+            sum = sum + temp1->data;
+        }
+        if(temp2)
+        {
+            sum = sum + temp2->data;
+        }
+        Node * newnode = new Node(sum%10);
+        carry = sum/10;
+        current->next = newnode;
+        current = current->next;
+        if(temp1)
+        {
+            temp1 = temp1->next;
+        }
+        if(temp2)
+        {
+            temp2 = temp2->next;
+        }
     }
-    while(current2 != NULL)
+    if(carry)
     {
-        b = b*10;
-        b = b + current2->data;
-        current2 = current2->next;
+        Node * newnode = new Node (carry);
+        current->next = newnode;
     }
-    return (a+b);
+    return dummynode->next;
 }
 void printLList(Node* n) 
 {
@@ -62,6 +81,8 @@ int main()
     printLList(l1);
     cout<<"second LL is ";
     printLList(l2);
-    cout<<"sum is "<<sum(l1,l2);
+    Node* s1 = sum(l1,l2);
+    cout<<"sum is ";
+    printLList(s1);
     return 0;
 }
