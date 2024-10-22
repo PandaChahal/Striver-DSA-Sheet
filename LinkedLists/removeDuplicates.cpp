@@ -1,5 +1,5 @@
 #include <iostream>
-#include<vector>
+#include <vector>
 using namespace std;
 class Node
 {
@@ -14,48 +14,48 @@ public:
         prev = nullptr;
     }
 };
-Node* removeDuplicates(Node* head) 
+Node *removeDuplicates(Node *head)
 {
-    Node* temp = head;
-    while(temp!=nullptr && temp->next !=nullptr)
+    Node *temp = head;
+    while (temp != nullptr && temp->next != nullptr)
     {
-        Node* nextnode = temp->next;
-        while(nextnode!=nullptr && nextnode->data == temp->data)
+        Node *nextnode = temp->next;
+        while (nextnode != nullptr && nextnode->data == temp->data)
         {
-            Node* duplicate = nextnode;
-            nextnode=nextnode->next;
+            Node *duplicate = nextnode;
+            nextnode = nextnode->next;
             free(duplicate);
         }
         temp->next = nextnode;
-        if(nextnode)
+        if (nextnode)
         {
-            nextnode->prev =temp;
+            nextnode->prev = temp;
         }
         temp = temp->next;
     }
     return head;
 }
 
-void printLL(Node* head)
+void printLL(Node *head)
 {
-    Node* current = head;
-    while(current!=nullptr)
+    Node *current = head;
+    while (current != nullptr)
     {
-        cout<<current->data<<" ";
-        current=current->next;
+        cout << current->data << " ";
+        current = current->next;
     }
-    cout<<endl;
+    cout << endl;
 }
 
 int main()
 {
-    Node* n1 = new Node(1);
-    Node* n2 = new Node(1);
-    Node* n3 = new Node(1);
-    Node* n4 = new Node(2);
-    Node* n5 = new Node(3);
-    Node* n6 = new Node(3);
-    Node* n7 = new Node(4);
+    Node *n1 = new Node(1);
+    Node *n2 = new Node(1);
+    Node *n3 = new Node(1);
+    Node *n4 = new Node(2);
+    Node *n5 = new Node(3);
+    Node *n6 = new Node(3);
+    Node *n7 = new Node(4);
 
     n1->next = n2;
     n2->prev = n1;
@@ -70,7 +70,7 @@ int main()
     n6->next = n7;
     n7->prev = n6;
     printLL(n1);
-    Node* head = removeDuplicates(n1);
+    Node *head = removeDuplicates(n1);
     printLL(head);
     return 0;
 }
