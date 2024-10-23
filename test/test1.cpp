@@ -1,19 +1,19 @@
-#include<bits/stdc++.h>
-#include<vector>
+#include <bits/stdc++.h>
+#include <vector>
 using namespace std;
 
-//rearrange 012 array
+// rearrange 012 array
 vector<int> rearrange(vector<int> &arr)
 {
     int n = arr.size();
-    int a =0,b=0,c=0;
-    for(int i =0;i<n;i++)
+    int a = 0, b = 0, c = 0;
+    for (int i = 0; i < n; i++)
     {
-        if(arr[i] == 0)
+        if (arr[i] == 0)
         {
             a++;
         }
-        else if(arr[i] == 1)
+        else if (arr[i] == 1)
         {
             b++;
         }
@@ -22,15 +22,15 @@ vector<int> rearrange(vector<int> &arr)
             c++;
         }
     }
-    for(int i=0;i<a;i++)
+    for (int i = 0; i < a; i++)
     {
         arr[i] = 0;
     }
-    for(int i=a;i<a+b;i++)
+    for (int i = a; i < a + b; i++)
     {
         arr[i] = 1;
     }
-    for(int i=a+b;i<a+b+c;i++)
+    for (int i = a + b; i < a + b + c; i++)
     {
         arr[i] = 2;
     }
@@ -38,21 +38,21 @@ vector<int> rearrange(vector<int> &arr)
 }
 int main()
 {
-    vector<int> arr = {2,0,2,1,1,0};
+    vector<int> arr = {2, 0, 2, 1, 1, 0};
     vector<int> final = rearrange(arr);
-    for(int i=0;i<final.size();i++)
+    for (int i = 0; i < final.size(); i++)
     {
-        cout<<final[i]<<" ";
+        cout << final[i] << " ";
     }
     return 0;
 }
 
-//deleting a node
-// class Node
-// {
-//     public:
-//     int data ;
-//     Node* next;
+// deleting a node
+//  class Node
+//  {
+//      public:
+//      int data ;
+//      Node* next;
 
 //     Node (int value)
 //     {
@@ -98,32 +98,32 @@ int main()
 //     return 0;
 // }
 
-//deleting duplicates
-// int main()
-// {
-//     vector<int> arr = {1,1,1,2,2,3,3,3,3,4,4};
-//     vector<int> result;
-//     int i =0;
-//     int n = arr.size();
-//     int element = 0;
-//     while(i<n)
-//     {
-//         if(arr[i] == element)
-//         {
-//             i++;
-//         }
-//         else
-//         {
-//             element = arr[i];
-//             result.push_back(element);
-//             i++;
-//         }
-//     }
-//     for(int i =0;i<result.size();i++)
-//     {
-//         cout<<result[i]<<" ";
-//     }
-//     cout<<endl;
-//     cout<<result.size()<<endl;
-//     return 0;
-// }
+// deleting duplicates
+//  int main()
+//  {
+//      vector<int> arr = {1,1,1,2,2,3,3,3,3,4,4};
+//      vector<int> result;
+//      int i =0;
+//      int n = arr.size();
+//      int element = 0;
+//      while(i<n)
+//      {
+//          if(arr[i] == element)
+//          {
+//              i++;
+//          }
+//          else
+//          {
+//              element = arr[i];
+//              result.push_back(element);
+//              i++;
+//          }
+//      }
+//      for(int i =0;i<result.size();i++)
+//      {
+//          cout<<result[i]<<" ";
+//      }
+//      cout<<endl;
+//      cout<<result.size()<<endl;
+//      return 0;
+//  }
