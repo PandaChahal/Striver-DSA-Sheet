@@ -17,18 +17,18 @@ vector<int> sort(vector<int> &arr)
 vector<int> twoSum(vector<int> Arr, int k)
 {
     int n = Arr.size();
-    vector<int> answer ;
+    vector<int> answer;
     int i = 0;
     int j = n - 1;
     while (i != j)
     {
-        if ((Arr[i]+Arr[j]) == k)
+        if ((Arr[i] + Arr[j]) == k)
         {
             answer.push_back(i);
             answer.push_back(j);
             break;
         }
-        else if ((Arr[i]+Arr[j]) < k)
+        else if ((Arr[i] + Arr[j]) < k)
         {
             i++;
         }
@@ -44,10 +44,10 @@ int main()
     vector<int> arr = {2, 6, 5, 8, 11};
     vector<int> sortedArr = sort(arr);
     int k = 14;
-    vector<int> index = twoSum(sortedArr,k);
-    for(int i =0;i<index.size();i++)
+    vector<int> index = twoSum(sortedArr, k);
+    for (int i = 0; i < index.size(); i++)
     {
-        cout<<index[i]<<" ";
+        cout << index[i] << " ";
     }
     return 0;
 }
