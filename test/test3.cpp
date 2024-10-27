@@ -40,34 +40,34 @@ Node* reverse(Node* head)
     head->next = nullptr;
     return newhead;
 }
-// Node* sum1(Node* head)
-// {
-//     Node * n1 = reverse(head);
-//     int carry = 1;
-//     Node * temp = n1;
-//     while(temp != nullptr)
-//     {
-//         temp->data += carry;
-//         if(temp->data < 10)
-//         {
-//             carry = 0;
-//             break;
-//         }
-//         else
-//         {
-//             temp->data = 0;
-//             carry = 1;
-//         }
-//         temp = temp->next;
-//     }
-//     if(carry)
-//     {
-//         Node * newNode = new Node(1);
-//         temp->next = newNode;
-//     }
-//     Node * newHead = reverse(n1);
-//     return newHead;
-// }
+Node* sum1(Node* head)
+{
+    Node * n1 = reverse(head);
+    int carry = 1;
+    Node * temp = n1;
+    while(temp != nullptr)
+    {
+        temp->data += carry;
+        if(temp->data < 10)
+        {
+            carry = 0;
+            break;
+        }
+        else
+        {
+            temp->data = 0;
+            carry = 1;
+        }
+        temp = temp->next;
+    }
+    if(carry)
+    {
+        Node * newNode = new Node(1);
+        temp->next = newNode;
+    }
+    Node * newHead = reverse(n1);
+    return newHead;
+}
 
 // int main()
 // {
@@ -122,20 +122,80 @@ Node * sum2(Node * n1,Node * n2)
     Node * finalHead = reverse(dummy->next);
     return finalHead;
 }
+// int main()
+// {
+//     Node * n1 = new Node(2);
+//     n1->next = new Node(4);
+//     n1->next->next = new Node(2);
+//     Node * n2 = new Node(5);
+//     n2->next = new Node(6);
+//     n2->next->next = new Node(8);
+//     cout<<"LL1 is ";
+//     printLL(n1);
+//     cout<<"LL2 is ";
+//     printLL(n2);
+//     n1 = sum2(n1,n2);
+//     cout<<"their sum is ";
+//     printLL(n1);
+//     return 0;
+// }
+
+Node * sort(Node * head)
+{
+    if(head == NULL || head->next == NULL)
+    {
+        return head;
+    }
+    Node * temp = head;
+    Node * zeroHead = new Node(-1);
+    Node * oneHead = new Node(-1);
+    Node * twoHead = new Node(-1);
+    Node * zero = zeroHead;
+    Node * one = oneHead;
+    Node * two = twoHead;
+    while(temp != NULL)
+    {
+        if(temp->data == 0)
+        {
+            zero->next = temp;
+            zero = temp;
+        }
+        else if(temp->data == 1)
+        {
+            one->next = temp;
+            one = temp;
+        }
+        else
+        {
+            two->next = temp;
+            two = temp;
+        }
+        temp = temp->next;
+    }
+    zero->next = (oneHead->next) ? oneHead->next : twoHead->next;
+    one->next = twoHead->next;
+    two->next = NULL;
+    Node * newHead = zeroHead->next;
+    return newHead;
+}
+
 int main()
 {
-    Node * n1 = new Node(2);
-    n1->next = new Node(4);
-    n1->next->next = new Node(2);
-    Node * n2 = new Node(5);
-    n2->next = new Node(6);
-    n2->next->next = new Node(8);
-    cout<<"LL1 is ";
+    Node* n1 = new Node (0);
+    Node* n2 = new Node (2);
+    Node* n3 = new Node (1);
+    Node* n4 = new Node (2);
+    Node* n5 = new Node (1);
+    Node* n6 = new Node (0);
+    n1->next = n2;
+    n2->next = n3;
+    n3->next = n4;
+    n4->next = n5;
+    n5->next = n6;
+    cout<<"original LL is ";
     printLL(n1);
-    cout<<"LL2 is ";
-    printLL(n2);
-    n1 = sum2(n1,n2);
-    cout<<"their sum is ";
+    n1 = sort(n1);
+    cout<<"now the LL is ";
     printLL(n1);
     return 0;
 }
