@@ -81,6 +81,6 @@ int main()
     cout<<st.Top()<<" ";
     st.pop();
 
-    cout<<st.Top()<<" ";
+    cout<<st.Top()<<" "; 
     return 0;
 }

@@ -5,7 +5,7 @@ class Stack
 {
     queue<int> q;
 
-public:
+    public:
     void push(int val)
     {
         int size = q.size();
