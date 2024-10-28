@@ -28,9 +28,9 @@ public:
 
     void push(int val)
     {
-        StackNode *ele = new StackNode(val);
-        ele->next = top;
-        top = ele;
+        StackNode *temp = new StackNode(val);
+        temp->next = top;
+        top = temp;
         cout << "Element added" << endl;
         size++;
     }
@@ -72,6 +72,7 @@ int main()
     s1.pop();
     cout << s1.Top() << " ";
     s1.pop();
+    cout<<endl;
     cout << s1.StackSize() << " ";
     s1.pop();
     cout << s1.StackSize() << " ";
