@@ -4,7 +4,7 @@ using namespace std;
 class Queue{
     int front;
     int back;
-    int* arr;
+    int * arr;
     int n=10;
 
     public:
@@ -47,7 +47,7 @@ class Queue{
             cout<<"The queue is empty"<<endl;
             return -1;
         }
-        return front;
+        return arr[front];
     }
 
     int size()
