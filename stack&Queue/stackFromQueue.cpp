@@ -1,44 +1,58 @@
-#include <iostream>
-#include <queue>
+#include <bits/stdc++.h>
 using namespace std;
-class Stack
+class stack1
 {
-    queue<int> q;
+    int n;
+    queue<int> q1;
+    queue<int> q2;
 
-    public:
+public:
+    stack1()
+    {
+        n = 0;
+    }
     void push(int val)
     {
-        int size = q.size();
-        q.push(val);
-        for (int i = 0; i < size; i++)
+        q2.push(val);
+        n++;
+        while (!q1.empty())
         {
-            q.push(q.front());
-            q.pop();
+            q2.push(q1.front());
+            q1.pop();
         }
+        queue<int> temp = q1;
+        q1 = q2;
+        q2 = temp;
     }
     void pop()
     {
-        q.pop();
+        q1.pop();
+        n--;
     }
     int top()
     {
-        return q.front();
+        return q1.front();
+    }
+    int size()
+    {
+        return n;
     }
 };
 int main()
 {
-    Stack s1;
-    s1.push(1);
-    s1.push(2);
-    s1.push(3);
-    s1.push(4);
-    cout << s1.top() << " ";
-    s1.pop();
-    cout << s1.top() << " ";
-    s1.pop();
-    cout << s1.top() << " ";
-    s1.pop();
-    cout << s1.top() << " ";
-    s1.pop();
+    stack1 q3;
+    q3.push(1);
+    q3.push(2);
+    q3.push(3);
+    q3.push(4);
+    cout << q3.top() << endl;
+    q3.pop();
+    cout << q3.top() << endl;
+    q3.pop();
+    cout << q3.top() << endl;
+    q3.pop();
+    cout << q3.top() << endl;
+    q3.pop();
+    cout << "size is " <<q3.size() << endl;
     return 0;
 }
