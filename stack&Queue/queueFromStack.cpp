@@ -4,16 +4,18 @@ using namespace std;
 class Queue 
 {
   public:
+  int n;
   stack < int > input, output;
 
   Queue() 
   {
-
+    n=0;
   }
 
   void push(int x) 
   {
     input.push(x);
+    n++;
   }
 
   int pop()
@@ -27,6 +29,7 @@ class Queue
     }    
     int x = output.top();
     output.pop();
+    n--;
     return x;
   }
 
@@ -42,7 +45,7 @@ class Queue
   }
 
   int size() {
-    return (output.size() + input.size()); 
+    return (n); 
   }
 
 };
