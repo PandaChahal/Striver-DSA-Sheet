@@ -38,6 +38,11 @@ using namespace std;
 
 int main()
 {
-    
+    vector<int> arr = {10,6,-5};
+    vector<int> ans = asteroidCollision(arr);
+    for(int i =0;i<ans.size();i++)
+    {
+        cout<<ans[i]<<" ";
+    }
     return 0;
 }
