@@ -19,7 +19,6 @@ int fruitInBasket(vector<int> arr,int k)
             l++;
         }
         maxL = max(maxL,(r-l+1));
-        
         r++;
     }
     return maxL;
