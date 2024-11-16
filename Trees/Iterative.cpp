@@ -37,6 +37,39 @@ vector<int> preOrder(Node *root)
     }
     return preOrder;
 }
+
+vector<int> postOrder(Node* root) 
+{
+    vector<int> postorder;
+
+    if(root == NULL){
+        return postorder;
+    }
+
+    stack<Node*> st1, st2;
+    st1.push(root);
+    while(!st1.empty())
+    {
+        root = st1.top();
+        st1.pop();
+        st2.push(root);
+        if(root->left != NULL){
+            st1.push(root->left);
+        }
+        if(root->right != NULL){
+            st1.push(root->right);
+        }
+    }
+
+    while(!st2.empty())
+    {
+        postorder.push_back(st2.top()->data);
+        st2.pop();
+    }
+    return postorder;
+}
+
+
 int main()
 {
     Node* root = new Node(1);
@@ -44,12 +77,16 @@ int main()
     root->right = new Node(3);
     root->left->left = new Node(4);
     root->left->right = new Node(5);
-    root->right->left = new Node(6);
-    root->right->right = new Node(7);
     vector<int> ans = preOrder(root);
     for(int i=0;i<ans.size();i++)
     {
         cout<<ans[i]<<" ";
+    }
+    cout<<endl;
+    vector<int> ans2 = postOrder(root);
+    for(int i=0;i<ans2.size();i++)
+    {
+        cout<<ans2[i]<<" ";
     }
     return 0;
 }
