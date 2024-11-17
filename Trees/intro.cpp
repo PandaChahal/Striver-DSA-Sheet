@@ -1,52 +1,53 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-struct Node{
+struct Node
+{
     int data;
-    Node * right ;
-    Node * left;
+    Node *right;
+    Node *left;
     Node(int value)
     {
         right = left = nullptr;
-        data = value ;
+        data = value;
     }
 };
 
-void preOrder(Node* root)
+void preOrder(Node *root)
 {
-    if(root == nullptr)
+    if (root == nullptr)
     {
-        return ;
+        return;
     }
-    cout<<root->data<<" ";
+    cout << root->data << " ";
     preOrder(root->left);
     preOrder(root->right);
 }
 
-void postOrder(Node* root)
+void postOrder(Node *root)
 {
-    if(root == NULL)
+    if (root == NULL)
     {
-        return ;
+        return;
     }
     postOrder(root->left);
     postOrder(root->right);
-    cout<<root->data<<" ";
+    cout << root->data << " ";
 }
 
-void inOrder(Node * root)
+void inOrder(Node *root)
 {
-    if(root == NULL)
+    if (root == NULL)
     {
-        return ;
+        return;
     }
     inOrder(root->left);
-    cout<<root->data<<" ";
+    cout << root->data << " ";
     inOrder(root->right);
 }
 int main()
 {
-    Node * root = new Node(4);
+    Node *root = new Node(4);
     root->left = new Node(2);
     root->left->left = new Node(3);
     root->left->left->right = new Node(9);
@@ -56,10 +57,10 @@ int main()
     root->right->right = new Node(6);
     root->right->right->left = new Node(8);
     preOrder(root);
-    cout<<endl;
+    cout << endl;
     postOrder(root);
-    cout<<endl;
+    cout << endl;
     inOrder(root);
-    cout<<endl;
+    cout << endl;
     return 0;
 }
