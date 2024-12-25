@@ -6,10 +6,10 @@ struct Node
     int data;
     Node *right;
     Node *left;
-    Node(int value)
+    Node(int val)
     {
         right = left = nullptr;
-        data = value;
+        data = val;
     }
 };
 
