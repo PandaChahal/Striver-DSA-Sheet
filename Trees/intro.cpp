@@ -47,19 +47,22 @@ void inOrder(Node *root)
 }
 int main()
 {
-    Node *root = new Node(4);
+    Node *root = new Node(1);
     root->left = new Node(2);
     root->left->left = new Node(3);
-    root->left->left->right = new Node(9);
-    root->left->left->right->left = new Node(1);
+    root->left->left->right = new Node(4);
+    root->left->left->right->left = new Node(8);
     root->right = new Node(5);
-    root->right->left = new Node(7);
+    root->right->left = new Node(9);
     root->right->right = new Node(6);
-    root->right->right->left = new Node(8);
+    root->right->right->left = new Node(7);
+    cout<<"preOrder : ";
     preOrder(root);
     cout << endl;
+    cout<<"postOrder : ";
     postOrder(root);
     cout << endl;
+    cout<<"inOrder : ";
     inOrder(root);
     cout << endl;
     return 0;
