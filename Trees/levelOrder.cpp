@@ -1,59 +1,76 @@
-#include<bits/stdc++.h>
-#include<queue>
+#include <bits/stdc++.h>
+#include <queue>
 using namespace std;
 
 struct Node
 {
-    int data ;
-    Node* left ;
-    Node* right ;
+    int data;
+    Node *left;
+    Node *right;
 
     Node(int value)
     {
-        data = value ;
+        data = value;
         left = right = nullptr;
     }
 };
 
-void levelOrder(Node * root)
+vector<vector<int>> levelOrder(Node *root)
 {
-    vector<int> ans;
-    if(root == nullptr)
+    vector<vector<int>> ans;
+    if (root == nullptr)
     {
-        return;
+        return ans;
     }
-    queue<Node*> q;
+    queue<Node *> q;
     q.push(root);
-    
-    while(!q.empty())
+
+    while (!q.empty())
     {
-        Node* current = q.front();
-        q.pop();
-        ans.push_back(current->data);
-        if(current->left != nullptr)
+        int n = q.size();
+        vector<int> level;
+        for (int i = 0; i < n; i++)
         {
-            q.push(current->left);
+            Node *node = q.front();
+
+            q.pop();
+
+            level.push_back(node->data);
+            if (node->left != nullptr)
+            {
+                q.push(node->left);
+            }
+            if (node->right != nullptr)
+            {
+                q.push(node->right);
+            }
         }
-        if(current->right != nullptr)
-        {
-            q.push(current->right);
-        }
+        ans.push_back(level);
     }
-    for(int i = 0; i < ans.size(); i++)
+    return ans;
+}
+
+void print(const vector<int>& ans)
+{
+    for (int num : ans) 
     {
-        cout << ans[i] << " ";
+        cout << num << " ";
     }
     cout << endl;
 }
 int main()
 {
-    Node* root = new Node(1);
+    Node *root = new Node(1);
     root->right = new Node(3);
     root->left = new Node(2);
     root->left->left = new Node(4);
     root->left->right = new Node(5);
     root->right->left = new Node(6);
     root->right->right = new Node(7);
-    levelOrder(root);
+    vector<vector<int>> result = levelOrder(root);
+    for (const vector<int>& level : result) 
+    {
+        print(level);
+    }
     return 0;
 }
