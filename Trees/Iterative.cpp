@@ -74,7 +74,7 @@ vector<int> postOrder(Node *root)
         return postorder;
     }
 
-    stack<Node *> st1, st2;
+    stack<Node *>st1, st2;
     st1.push(root);
     while (!st1.empty())
     {
@@ -117,6 +117,7 @@ int main()
     {
         cout << ans2[i] << " ";
     }
+    cout<<endl;
     vector<int> ans3 = inorder(root);
     for (int i = 0; i < ans3.size(); i++)
     {
