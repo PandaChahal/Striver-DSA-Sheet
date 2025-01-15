@@ -18,6 +18,7 @@ bool IdenticalTree(Node* p,Node* q)
     if(p==NULL && q== NULL) return true;
     if(p== NULL || q == NULL) return false;
     if(p->data == q->data && IdenticalTree(q->left,q->left) && IdenticalTree(p->right,q->right))return true ;
+    return false;
 }
 int main()
 {
