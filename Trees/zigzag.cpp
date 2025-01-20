@@ -1,4 +1,3 @@
-
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -10,6 +9,7 @@ struct Node
     Node(int value)
     {
         data = value;
+        left = right = NULL;
     }
 };
 
@@ -32,7 +32,15 @@ vector<vector<int>> ZigZagOrder(Node *root)
         {
             Node *node = q.front();
             q.pop();
-            int index = flag ? i : (size - 1 - i);
+            int index;
+            if(flag)
+            {
+                index = i;
+            }
+            else
+            {
+                index = size-i-1;
+            }
             row[index] = node->data;
             if (node->left)
             {
@@ -70,8 +78,8 @@ int main()
     root->right->left = new Node(6);
     root->right->right = new Node(7);
 
-    vector<vector<int>> result = ZigZagOrder(root);
-    printResult(result);
+    vector<vector<int>> ans = ZigZagOrder(root);
+    printResult(ans);
 
     return 0;
 }
