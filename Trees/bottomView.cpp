@@ -26,17 +26,14 @@ vector<int> topView(Node *root)
     {
         auto it = q.front();
         q.pop();
-        Node * node = it.first;
+        Node *node = it.first;
         int level = it.second;
-        if (mpp.find(level) == mpp.end())
-        {
-            mpp[level] = node->data;
-        }
-        if (node->left )
+        mpp[level] = node->data;
+        if (node->left)
         {
             q.push({node->left, level - 1});
         }
-        if (node->right )
+        if (node->right)
         {
             q.push({node->right, level + 1});
         }
@@ -50,7 +47,7 @@ vector<int> topView(Node *root)
 
 int main()
 {
-    Node * root = new Node(1);
+    Node *root = new Node(1);
     root->left = new Node(2);
     root->left->left = new Node(4);
     root->left->right = new Node(10);
@@ -62,7 +59,7 @@ int main()
 
     vector<int> ans = topView(root);
 
-    cout << "Top View Traversal: " << endl;
+    cout << "Bottom View Traversal: " << endl;
     for (auto node : ans)
     {
         cout << node << " ";

@@ -15,14 +15,14 @@ struct Node
 
 vector<vector<int>> verticalOrder(Node *root)
 {
-    queue<pair<Node *, pair<int, int>>> todo;
+    queue<pair<Node *, pair<int, int>>> q;
     map<int, map<int, multiset<int>>> nodes;
 
-    todo.push({root, {0, 0}});
-    while (!todo.empty())
+    q.push({root, {0, 0}});
+    while (!q.empty())
     {
-        auto p = todo.front();
-        todo.pop();
+        auto p = q.front();
+        q.pop();
         Node *temp = p.first;
         int x = p.second.first;
         int y = p.second.second;
@@ -30,11 +30,11 @@ vector<vector<int>> verticalOrder(Node *root)
 
         if (temp->left)
         {
-            todo.push({temp->left, {x - 1, y + 1}});
+            q.push({temp->left, {x - 1, y + 1}});
         }
         if (temp->right)
         {
-            todo.push({temp->right, {x + 1, y + 1}});
+            q.push({temp->right, {x + 1, y + 1}});
         }
     }
     vector<vector<int>> ans;
@@ -59,7 +59,6 @@ int main()
     root->right->right = new Node(7);
     root->right->left = new Node(6);
     vector<vector<int>> ans = verticalOrder(root);
-    cout << "[";
     for (int i = 0; i < ans.size(); i++)
     {
         cout << "[";
@@ -69,7 +68,6 @@ int main()
         }
         cout << "]";
     }
-    cout << "]";
 
     return 0;
 }

@@ -1,113 +1,71 @@
-                            
-#include <iostream>
-#include <vector>
-#include <set>
-#include <queue>
-#include <map>
-
+#include <bits/stdc++.h>
 using namespace std;
-
-// Node structure for the binary tree
-struct Node {
+struct Node
+{
     int data;
-    Node* left;
-    Node* right;
-    // Constructor to initialize
-    // the node with a value
-    Node(int val) : data(val), left(nullptr), right(nullptr) {}
-};
-
-class Solution{
-public:
-    // Function to return the
-    // top view of the binary tree
-    vector<int> topView(Node* root){
-        // Vector to store the result
-        vector<int> ans;
-        
-        // Check if the tree is empty
-        if(root == NULL){
-            return ans;
-        }
-        
-        // Map to store the top view nodes
-        // based on their vertical positions
-        map<int, int> mpp;
-        
-        // Queue for BFS traversal, each element
-        // is a pair containing node 
-        // and its vertical position
-        queue<pair<Node*, int>> q;
-        
-        // Push the root node with its vertical
-        // position (0) into the queue
-        q.push({root, 0});
-        
-        // BFS traversal
-        while(!q.empty()){
-            // Retrieve the node and its vertical
-            // position from the front of the queue
-            auto it = q.front();
-            q.pop();
-            Node* node = it.first;
-            int line = it.second;
-            
-            // If the vertical position is not already
-            // in the map, add the node's data to the map
-            if(mpp.find(line) == mpp.end()){
-                mpp[line] = node->data;
-            }
-            
-            // Process left child
-            if(node->left != NULL){
-                // Push the left child with a decreased
-                // vertical position into the queue
-                q.push({node->left, line - 1});
-            }
-            
-            // Process right child
-            if(node->right != NULL){
-                // Push the right child with an increased
-                // vertical position into the queue
-                q.push({node->right, line + 1});
-            }
-        }
-        
-        // Transfer values from the
-        // map to the result vector
-        for(auto it : mpp){
-            ans.push_back(it.second);
-        }
-        
-        return ans;
+    Node *left;
+    Node *right;
+    Node(int val)
+    {
+        data = val;
+        left = right = NULL;
     }
 };
 
-int main() {
-    // Creating a sample binary tree
-    Node* root = new Node(1);
+vector<int> topView(Node *root)
+{
+    vector<int> ans;
+    if (root == NULL)
+    {
+        return ans;
+    }
+    map<int, int> mpp;
+    queue<pair<Node *, int>> q;
+    q.push({root, 0});
+    while (!q.empty())
+    {
+        auto it = q.front();
+        q.pop();
+        Node * node = it.first;
+        int level = it.second;
+        if (mpp.find(level) == mpp.end())
+        {
+            mpp[level] = node->data;
+        }
+        if (node->left )
+        {
+            q.push({node->left, level - 1});
+        }
+        if (node->right )
+        {
+            q.push({node->right, level + 1});
+        }
+    }
+    for (auto it : mpp)
+    {
+        ans.push_back(it.second);
+    }
+    return ans;
+}
+
+int main()
+{
+    Node * root = new Node(1);
     root->left = new Node(2);
     root->left->left = new Node(4);
     root->left->right = new Node(10);
     root->left->left->right = new Node(5);
     root->left->left->right->right = new Node(6);
     root->right = new Node(3);
-    root->right->right = new Node(10);
+    root->right->right = new Node(11);
     root->right->left = new Node(9);
 
-    Solution solution;
+    vector<int> ans = topView(root);
 
-    // Get the top view traversal
-    vector<int> topView =
-                    solution.topView(root);
-
-    // Print the result
-    cout << "Top View Traversal: "<< endl;
-    for(auto node: topView){
+    cout << "Top View Traversal: " << endl;
+    for (auto node : ans)
+    {
         cout << node << " ";
     }
-
     return 0;
 }
-                            
-                        
