@@ -1,11 +1,11 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct Node
 {
-    int data ;
-    Node * left;
-    Node * right;
+    int data;
+    Node *left;
+    Node *right;
     Node(int value)
     {
         data = value;
@@ -13,20 +13,20 @@ struct Node
     }
 };
 
-void markParent(Node* root , unordered_map<Node*,Node*> parentTracker)
+void markParent(Node *root, unordered_map<Node *, Node *> &parentTracker)
 {
-    queue<Node*> q;
+    queue<Node *> q;
     q.push(root);
-    while(!q.empty())
+    while (!q.empty())
     {
-        Node * node = q.front();
+        Node *node = q.front();
         q.pop();
-        if(node->left) 
+        if (node->left)
         {
             parentTracker[node->left] = node;
             q.push(node->left);
         }
-        if(node->right) 
+        if (node->right)
         {
             parentTracker[node->right] = node;
             q.push(node->right);
@@ -34,43 +34,55 @@ void markParent(Node* root , unordered_map<Node*,Node*> parentTracker)
     }
 }
 
-int timeToBurn(Node* root,Node* target)
+int timeToBurn(Node *root, Node *target)
 {
-    queue<Node*> q;
-    unordered_map<Node*,Node*> parentTracker;
-    markParent(root,parentTracker);
-    unordered_map<Node*,bool> visited;
+    if (!root || !target) return 0;
+
+    unordered_map<Node *, Node *> parentTracker;
+    markParent(root, parentTracker);
+
+    unordered_map<Node *, bool> visited;
+    queue<Node *> q;
     q.push(target);
-    visited[target] = 1;
+    visited[target] = true;
     int count = 0;
-    while(!q.empty())
+
+    while (!q.empty())
     {
-        for(int i=0;i<q.size();i++)
+        int size = q.size();      
+        bool burntNewNode = false;
+
+        for (int i = 0; i < size; i++)
         {
-            Node * node = q.front();
+            Node *node = q.front();
             q.pop();
-            if(node->left && !visited[node->left])
+
+            if (node->left && !visited[node->left])
             {
                 q.push(node->left);
-                visited[node->left] = 1;
+                visited[node->left] = true;
+                burntNewNode = true;
             }
-            if(node->right && !visited[node->right])
+            if (node->right && !visited[node->right])
             {
                 q.push(node->right);
-                visited[node->right] = 1;
+                visited[node->right] = true;
+                burntNewNode = true;
             }
-            if(parentTracker[node] && !visited[parentTracker[node]])
+            if (parentTracker.count(node) && !visited[parentTracker[node]])
             {
                 q.push(parentTracker[node]);
-                visited[parentTracker[node]];
+                visited[parentTracker[node]] = true;
+                burntNewNode = true;
             }
-            count++;
         }
-        
 
+        if (burntNewNode) count++;
     }
+
     return count;
 }
+
 int main()
 {
     Node *root = new Node(1);
@@ -80,8 +92,8 @@ int main()
     root->left->right = new Node(5);
     root->left->right->left = new Node(6);
     root->left->right->right = new Node(7);
-    Node* target = root->left->right->left ->right;
-    target = new Node(9);
-    cout<<timeToBurn(root,target);
+    Node *target = root->left->right->left;
+
+    cout << "Time to burn the tree: " << timeToBurn(root, target) << endl;
     return 0;
 }
