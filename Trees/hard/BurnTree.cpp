@@ -92,7 +92,8 @@ int main()
     root->left->right = new Node(5);
     root->left->right->left = new Node(6);
     root->left->right->right = new Node(7);
-    Node *target = root->left->right->left;
+    root->left->right->left->right = new Node(8);
+    Node *target = root->left->right->left->right;
 
     cout << "Time to burn the tree: " << timeToBurn(root, target) << endl;
     return 0;
