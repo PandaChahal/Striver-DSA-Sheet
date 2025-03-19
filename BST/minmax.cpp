@@ -13,20 +13,34 @@ struct Node
     }
 };
 
-Node *searchBST(Node *root, int key)
+int minimum(Node* root)
 {
-    while (root != NULL && root->data != key)
+    if(root == NULL)
     {
-        if (root->data < key)
-        {
-            root = root->right;
-        }
-        else
-        {
-            root = root->left;
-        }
+        cout<<"ERROR , your tree is empty , there exists no min value ."<<endl;
+        return -1;
     }
-    return root;
+    Node* current = root;
+    while(current->left != NULL)
+    {
+        current = current->left;
+    }
+    return current->data;
+}
+
+int maximum(Node* root)
+{
+    if(root == NULL)
+    {
+        cout<<"ERROR , your tree is empty , there exists no max value ."<<endl;
+        return -1;
+    }
+    Node* current = root;
+    while(current->right != NULL)
+    {
+        current = current->right;
+    }
+    return current->data;
 }
 
 void InOrder(Node *root)
@@ -50,13 +64,10 @@ int main()
     root->left->right = new Node(4);
     root->right->left = new Node(6);
     root->right->right = new Node(10);
-
     cout << "Binary Search Tree: " ;
     InOrder(root);
     cout << endl;
-
-    int x = 6;
-    Node *result = searchBST(root, x);
-
+    cout<<"maximum number out of all entries in the given BST is "<<maximum(root)<<endl;
+    cout<<"minimum number out of all entries in the given BST is "<<minimum(root)<<endl;
     return 0;
 }
