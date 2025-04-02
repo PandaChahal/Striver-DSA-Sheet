@@ -17,7 +17,9 @@ int main()
             str = "";
         }
         else
+        {
             str += s[i];
+        }    
     }
     string ans = "";
     while (st.size() != 1)
@@ -25,8 +27,8 @@ int main()
         ans += st.top() + " ";
         st.pop();
     }
-    ans += st.top(); // The last word should'nt have a space after it
-    cout << "After reversing words: " << endl;
+    ans += st.top(); 
+    cout << "After reversal : " << endl;
     cout << ans;
     return 0;
 }
