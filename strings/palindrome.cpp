@@ -1,13 +1,32 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 int main()
 {
     string s = "this is a random string";
-    cout<<"Before reversing the string is : "<<s;
-    s+=" ";
+    cout << "Before reversing the string is : " << s;
+    s += " ";
     stack<string> st;
     int i;
-    string str="";
+    string str = "";
+    for (i = 0; i < s.length(); i++)
+    {
+        if (s[i] == ' ')
+        {
+            st.push(str);
+            str = "";
+        }
+        else
+            str += s[i];
+    }
+    string ans = "";
+    while (st.size() != 1)
+    {
+        ans += st.top() + " ";
+        st.pop();
+    }
+    ans += st.top(); // The last word should'nt have a space after it
+    cout << "After reversing words: " << endl;
+    cout << ans;
     return 0;
 }
