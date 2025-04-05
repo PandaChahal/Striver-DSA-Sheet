@@ -47,7 +47,7 @@ int main() {
     vector<vector<int>> adj
     {
         {1, 0, 1},
-        {0, 1, 0},
+        {1, 0, 0},
         {1, 0, 1}
     };
 
