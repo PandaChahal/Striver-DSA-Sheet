@@ -62,5 +62,9 @@ int main()
     InOrder(root);
     cout << endl;
 
+    int x;
+    cout<<"enter your value :";
+    cin>>x;
+    cout<<"your ceil value for given BST is : "<<ceil(root,x);
     return 0;
 }
