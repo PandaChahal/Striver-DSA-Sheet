@@ -13,27 +13,27 @@ struct Node
     }
 };
 
-int ceil(Node* root,int key)
+int floor(Node* root,int key)
 {
-    int ceil = -1;
+    int floor = -1;
     while(root != NULL)
     {
         if(root->data == key)
         {
-            ceil = root->data;
-            return ceil;
+            floor = root->data;
+            return floor;
         }
         if(key > root->data)
         {
+            floor = root->data;
             root = root->right;
         }
         else
         {
-            ceil = root->data;
             root = root->left;
         }
     }
-    return ceil;
+    return floor;
 }
 
 void InOrder(Node *root)
@@ -65,6 +65,6 @@ int main()
     int x;
     cout<<"enter your value :";
     cin>>x;
-    cout<<"your ceil value for given BST is : "<<ceil(root,x);
+    cout<<"your floor value for given BST is : "<<floor(root,x);
     return 0;
 }
