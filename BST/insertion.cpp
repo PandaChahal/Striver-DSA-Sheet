@@ -15,13 +15,15 @@ struct Node
 
 Node *insertBST(Node *root, int key)
 {
-    if(root == NULL)return new Node(key);
-    Node* current = root;
-    while(true)
+    if (root == NULL)
+        return new Node(key);
+    Node *current = root;
+    while (true)
     {
-        if(current->data <= key)
+        if (current->data <= key)
         {
-            if(current->right != NULL) current = current->right;
+            if (current->right != NULL)
+                current = current->right;
             else
             {
                 current->right = new Node(key);
@@ -30,8 +32,10 @@ Node *insertBST(Node *root, int key)
         }
         else
         {
-            if(current->left != NULL) current = current->left;
-            else{
+            if (current->left != NULL)
+                current = current->left;
+            else
+            {
                 current->left = new Node(key);
                 break;
             }
@@ -62,23 +66,23 @@ int main()
     root->right->left = new Node(6);
     root->right->right = new Node(10);
 
-    cout<<"Before insertion ---- ";
-    cout << "Binary Search Tree: " ;
+    cout << "Before insertion ---- ";
+    cout << "Binary Search Tree: ";
     InOrder(root);
     cout << endl;
 
     int x = 20;
     Node *result = insertBST(root, x);
 
-    cout<<"After insertion ---- ";
-    cout << "Binary Search Tree: " ;
+    cout << "After insertion ---- ";
+    cout << "Binary Search Tree: ";
     InOrder(root);
     cout << endl;
 
     int y = 1;
-    Node* entry = insertBST(root,y);
-    cout<<"After another insertion ---- ";
-    cout << "Binary Search Tree: " ;
+    Node *entry = insertBST(root, y);
+    cout << "After another insertion ---- ";
+    cout << "Binary Search Tree: ";
     InOrder(root);
     cout << endl;
 
