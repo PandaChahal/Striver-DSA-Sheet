@@ -13,17 +13,17 @@ struct Node
     }
 };
 
-int ceil(Node* root,int key)
+int ceil(Node *root, int key)
 {
     int ceil = -1;
-    while(root != NULL)
+    while (root != NULL)
     {
-        if(root->data == key)
+        if (root->data == key)
         {
             ceil = root->data;
             return ceil;
         }
-        if(key > root->data)
+        if (key > root->data)
         {
             root = root->right;
         }
@@ -58,13 +58,13 @@ int main()
     root->right->left = new Node(6);
     root->right->right = new Node(10);
 
-    cout << "Binary Search Tree: " ;
+    cout << "Binary Search Tree: ";
     InOrder(root);
     cout << endl;
 
     int x;
-    cout<<"enter your value :";
-    cin>>x;
-    cout<<"your ceil value for given BST is : "<<ceil(root,x);
+    cout << "enter your value :";
+    cin >> x;
+    cout << "your ceil value for given BST is : " << ceil(root, x);
     return 0;
 }
