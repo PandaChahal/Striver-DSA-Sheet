@@ -19,7 +19,7 @@ int main()
         else
         {
             str += s[i];
-        }    
+        }
     }
     string ans = "";
     while (st.size() != 1)
@@ -27,7 +27,7 @@ int main()
         ans += st.top() + " ";
         st.pop();
     }
-    ans += st.top(); 
+    ans += st.top();
     cout << "After reversal : " << endl;
     cout << ans;
     return 0;
