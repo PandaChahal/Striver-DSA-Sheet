@@ -1,39 +1,45 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void dfs(int node, vector<int> adjLs[], int vis[])
+void dfs(int node, vector<int> arr[], vector<int> &vis)
 {
     vis[node] = 1;
-    for (auto it : adjLs[node])
+    for (auto it : arr[node])
     {
         if (!vis[it])
         {
-            dfs(it, adjLs, vis);
+            dfs(it, arr, vis);
         }
     }
 }
-int numProvinces(vector<vector<int>> adj, int V)
+
+int numProvinces(vector<vector<int>> matrix)
 {
-    vector<int> adjLs[V];
-    for (int i = 0; i < V; i++)
+    int n = matrix.size();
+    vector<int> arr[n];
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < V; j++)
+        for (int j = 0; j < matrix[0].size(); j++)
         {
-            if (adj[i][j] == 1 && i != j)
+            if(i==j) continue;
+            else
             {
-                adjLs[i].push_back(j);
-                adjLs[j].push_back(i);
+                if(matrix[i][j] == 1)
+                {
+                    arr[i].push_back(j);
+                    arr[j].push_back(i);
+                }
             }
         }
     }
-    int vis[V] = {0};
+    vector<int> vis(n+1,0);
     int cnt = 0;
-    for (int i = 0; i < V; i++)
+    for (int i = 0; i < n; i++)
     {
         if (!vis[i])
         {
             cnt++;
-            dfs(i, adjLs, vis);
+            dfs(i, arr, vis);
         }
     }
     return cnt;
@@ -42,12 +48,8 @@ int numProvinces(vector<vector<int>> adj, int V)
 int main()
 {
 
-    vector<vector<int>> adj{
-        {1, 0, 1},
-        {1, 0, 0},
-        {1, 0, 1}};
-
-    numProvinces(adj, 3) ;
+    vector<vector<int>> adj{ {1, 0, 1},{1, 0, 0},{1, 0, 1}};
+    cout<< numProvinces(adj) ;
 
     return 0;
 }
