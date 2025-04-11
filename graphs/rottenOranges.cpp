@@ -14,7 +14,7 @@ int orangesRotting(vector<vector<int>>& grid)
             if(grid[i][j] == 2)
             {
                 q.push({{i,j},0});
-                vis[i][j] == 2;
+                vis[i][j] = 2;
             }
             else
             {
@@ -32,7 +32,7 @@ int orangesRotting(vector<vector<int>>& grid)
         int t = q.front().second;
         tm = max(t,tm);
         q.pop();
-        for(int i=0;i<n;i++)
+        for(int i=0;i<4;i++)
         {
             int nrow = r+drow[i];
             int ncol = c+dcol[i];
