@@ -1,10 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool detect(int src, vector<int> adj[], int vis[])
+bool detect(int src, vector<int> arr[], int vis[])
 {
     vis[src] = 1;
-
     queue<pair<int, int>> q;
     q.push({src, -1});
     while (!q.empty())
@@ -13,33 +12,29 @@ bool detect(int src, vector<int> adj[], int vis[])
         int parent = q.front().second;
         q.pop();
 
-        for (auto adjacentNode : adj[node])
+        for (auto it : arr[node])
         {
-            if (!vis[adjacentNode])
+            if (!vis[it])
             {
-                vis[adjacentNode] = 1;
-                q.push({adjacentNode, node});
+                vis[it] = 1;
+                q.push({it, node});
             }
-            else if (parent != adjacentNode)
+            else if (parent != it)
             {
-
                 return true;
             }
         }
     }
-
     return false;
 }
-bool isCycle(int V, vector<int> adj[])
+bool isCycle(int V, vector<int> arr[])
 {
-
     int vis[V] = {0};
     for (int i = 0; i < V; i++)
     {
         if (!vis[i])
         {
-            if (detect(i, adj, vis))
-                return true;
+            if (detect(i, arr, vis))return true;
         }
     }
     return false;
@@ -48,11 +43,11 @@ bool isCycle(int V, vector<int> adj[])
 int main()
 {
 
-    vector<int> adj[4] = {{}, {2}, {1, 3}, {2}};
-    bool ans = isCycle(4, adj);
+    vector<int> arr[] = {{}, {2,5}, {1,3}, {2,4},{3,6},{1,6,7},{4,5,8},{5},{6}};
+    bool ans = isCycle(4, arr);
     if (ans)
-        cout << "1\n";
+        cout << "yes\n";
     else
-        cout << "0\n";
+        cout << "no\n";
     return 0;
 }
