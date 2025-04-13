@@ -44,7 +44,7 @@ int main()
 {
 
     vector<int> arr[] = {{}, {2,5}, {1,3}, {2,4},{3,6},{1,6,7},{4,5,8},{5},{6}};
-    bool ans = isCycle(4, arr);
+    bool ans = isCycle(8, arr);
     if (ans)
         cout << "yes\n";
     else
