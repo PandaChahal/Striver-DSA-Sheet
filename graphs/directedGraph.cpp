@@ -37,15 +37,15 @@ bool isCyclic(int N, vector<int> adj[])
 
 int main()
 {
-    vector<int> adj[11] = {{}, {2}, {3}, {4, 7}, {5}, {6}, {}, {5}, {2,9}, {10}, {8}};
-    bool ans = isCyclic(11,adj);
-    if(ans)
+    vector<int> adj[11] = {{}, {2}, {3}, {4, 7}, {5}, {6}, {}, {5}, {2, 9}, {10}, {8}};
+    bool ans = isCyclic(11, adj);
+    if (ans)
     {
-        cout<<"yes \n";
+        cout << "yes \n";
     }
     else
     {
-        cout<<"no \n";
+        cout << "no \n";
     }
     return 0;
 }
