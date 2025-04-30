@@ -11,7 +11,7 @@ vector<int> shortestPath(int N, int M, vector<vector<int>> &edges)
         adj[edges[i][0]].push_back({edges[i][1], edges[i][2]});
     }
 
-    queue<pair<int,int>> q;
+    queue<pair<int, int>> q;
     q.push({0, 0});
     ans[0] = 0;
 
@@ -38,7 +38,7 @@ vector<int> shortestPath(int N, int M, vector<vector<int>> &edges)
         if (ans[i] == INT_MAX)
         {
             ans[i] = -1;
-        }   
+        }
     }
     return ans;
 }
@@ -46,18 +46,17 @@ vector<int> shortestPath(int N, int M, vector<vector<int>> &edges)
 int main()
 {
     vector<vector<int>> edges{
-        {0,1,2},
-        {0,4,1},
-        {4,5,4},
-        {4,2,2},
-        {1,2,3},
-        {2,3,6},
-        {5,3,1}
-    };
-    vector<int> ans= shortestPath(6,7,edges);
-    for(int i=0;i<ans.size();i++)
+        {0, 1, 2},
+        {0, 4, 1},
+        {4, 5, 4},
+        {4, 2, 2},
+        {1, 2, 3},
+        {2, 3, 6},
+        {5, 3, 1}};
+    vector<int> ans = shortestPath(6, 7, edges);
+    for (int i = 0; i < ans.size(); i++)
     {
-        cout<<ans[i]<<" ";
+        cout << ans[i] << " ";
     }
     return 0;
 }
