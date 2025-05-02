@@ -37,7 +37,7 @@ void topo(vector<vector<int>> adj, int n)
 
 int main()
 {
-    vector<vector<int>> adj {{}, {}, {3}, {1}, {0, 1}, {0, 2}};
+    vector<vector<int>> adj{{}, {}, {3}, {1}, {0, 1}, {0, 2}};
     int n = adj.size();
     topo(adj, n);
     return 0;
