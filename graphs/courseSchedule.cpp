@@ -49,22 +49,22 @@ bool canFinish(int numCourses, vector<vector<int>> &prerequisites)
 int main()
 {
     vector<vector<int>> prerequisites;
-	int N = 4;
-	prerequisites.push_back({1, 0});
-	prerequisites.push_back({2, 1});
-	prerequisites.push_back({3, 2});
+    int N = 4;
+    prerequisites.push_back({1, 0});
+    prerequisites.push_back({2, 1});
+    prerequisites.push_back({3, 2});
 
-	bool ans = canFinish(N, prerequisites);
+    bool ans = canFinish(N, prerequisites);
 
-	if (ans) 
+    if (ans)
     {
         cout << "YES";
     }
-	else 
+    else
     {
         cout << "NO";
     }
-	cout << endl;
+    cout << endl;
 
-	return 0;
+    return 0;
 }
