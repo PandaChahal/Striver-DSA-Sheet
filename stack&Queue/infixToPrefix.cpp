@@ -1,17 +1,17 @@
-#include<bits/stdc++.h>
-#include<stack>
+#include <bits/stdc++.h>
+#include <stack>
 using namespace std;
 int precd(char c)
 {
-    if(c == '^')
+    if (c == '^')
     {
         return 3;
     }
-    else if (c == '/' || c =='*')
+    else if (c == '/' || c == '*')
     {
         return 2;
     }
-    else if(c == '+' || c =='-')
+    else if (c == '+' || c == '-')
     {
         return 1;
     }
@@ -24,20 +24,20 @@ void infixToPostfix(string s)
 {
     stack<int> st;
     string result;
-    for(int i=0;i<s.length();i++)
+    for (int i = 0; i < s.length(); i++)
     {
         char c = s[i];
-        if(c >= 'a' && c<='z' || c >= 'A' && c<='Z' || c >= '0' && c<='9')
+        if (c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z' || c >= '0' && c <= '9')
         {
             result += c;
         }
-        else if(c == ')')
+        else if (c == ')')
         {
             st.push(')');
         }
-        else if(c == '(')
+        else if (c == '(')
         {
-            while(st.top() != ')')
+            while (st.top() != ')')
             {
                 result += st.top();
                 st.pop();
@@ -46,7 +46,7 @@ void infixToPostfix(string s)
         }
         else
         {
-            while(!(st.empty()) && precd(c) < precd(st.top()))
+            while (!(st.empty()) && precd(c) < precd(st.top()))
             {
                 result += st.top();
                 st.pop();
@@ -54,7 +54,7 @@ void infixToPostfix(string s)
             st.push(c);
         }
     }
-    cout<<result<<endl;
+    cout << result << endl;
 }
 int main()
 {

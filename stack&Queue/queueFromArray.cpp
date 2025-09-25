@@ -57,7 +57,7 @@ class Queue{
             cout<<"The queue is empty"<<endl;
             return -1;
         }
-        return back;
+        return (back+1);
     }
 };
 
@@ -74,6 +74,7 @@ int main()
     q1.pop();
     cout<<q1.top()<<" ";
     q1.pop();
-    cout<<q1.top()<<" ";
+    cout<<q1.top()<<endl;
+    cout<<"size : "<<q1.size()<<endl;
     return 0;
 }

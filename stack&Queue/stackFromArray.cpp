@@ -60,7 +60,7 @@ class Stack{
         cout<<"The stack is empty"<<endl;
         return 0;
         }
-        return top;
+        return (top+1);
     }
 };
 
@@ -82,5 +82,7 @@ int main()
     st.pop();
 
     cout<<st.Top()<<" "; 
+
+    cout<<st.size();
     return 0;
 }
